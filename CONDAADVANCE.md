@@ -33,3 +33,53 @@ conda env update --prefix F:\Anaconda3\envs\vegahvyml --file vegahvymlud.yml --p
 ```
 
 4. Enviroment variables
+* set a enviroment variable
+* note: create and activate your enviroment first
+* conda env config vars set my_var=value
+```
+conda env config vars set MYNAME=VIET
+```
+* remember to reactivate enviroment to apply change
+```
+conda activate vegahv
+```
+* To make sure variable set
+```
+conda env config vars list
+```
+* unset a variable
+* conda env config vars unset my_var -n test-env
+```
+conda env config vars unset MYNAME -n test-env
+```
+5. Saving enviroment variable (for window)
+* Enter the enviroment directory and create the subdirectories and files
+* note: enter the enviroment directory first
+``` 
+mkdir .\etc\conda\activate.d
+mkdir .\etc\conda\deactivate.d
+type NUL > .\etc\conda\activate.d\env_vars.bat
+type NUL > .\etc\conda\deactivate.d\env_vars.bat
+```
+* Edit .\etc\conda\activate.d\env_vars.bat as follow
+* set MY_KEY='secret-key-value'
+* set MY_FILE=C:\path\to\my\file
+```
+MY_KEY='secret-key-value'
+MY_FILE=G:\python\VegaSeminar\PythonDotEnv
+```
+* set MY_KEY=
+* set MY_FILE=
+```
+set MY_KEY=
+set MY_FILE=
+```
+
+
+6. Sharing an enviroment
+* activate the enviroment need to export first
+* then export the enviroment, that will create yml file
+```
+conda env export > environment.yml
+```
+* share the yml file to others
