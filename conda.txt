@@ -1,0 +1,107 @@
+1, Create and fundamentally management
+conda create -n envname python=version : create new env
+conda activate envname: activate(switch) env
+conda env list: list the available env
+conda list: list package env
+conda install -c conda-forge package_name: install package
+-> google search : pakage_name anaconda, copy command line
+note: conda install often addition install many side package relate to main package, pip install usually install only main packages and very few addition package 
+conda create --name myclone --clone myenv : clone an env
+conda env remove --name envname: remove an env
+conda list --revisions: list of removal env
+conda install --revision=REVNUM : restore env
+
+2, Advance create and management
+conda env create -f enviroment.yml : create env base on yml file
+
+note: yml is a file contain the initial setup for an enviroment. Example:
+
+name: vegahvyml
+channels:
+	- default
+dependencies:
+	- depend1=version...
+	- depend2=version...
+prefix: /path/anaconda3/envs/....
+note: yml file of env can be update to update env
+
+conda create --prefix ./envs :specify location for env
+
+$ conda env update --prefix ./env --file enviroment.yml --prune : update env through yml file
+
+conda list --explicit: produce a spec list, for example:
+# This file may be used to create an environment using:
+# $ conda create --name <env> --file <this file>
+# platform: win-64
+@EXPLICIT
+https://conda.anaconda.org/conda-forge/win-64/ca-certificates-2021.10.8-h5b45459_0.tar.bz2
+https://conda.anaconda.org/conda-forge/win-64/ucrt-10.0.20348.0-h57928b3_0.tar.bz2
+https://conda.anaconda.org/conda-forge/win-64/vs2015_runtime-14.29.30037-h902a5da_6.tar.bz2
+https://conda.anaconda.org/conda-forge/win-64/vc-14.2-hb210afc_6.tar.bz2
+https://conda.anaconda.org/conda-forge/win-64/openssl-1.1.1l-h8ffe710_0.tar.bz2
+https://conda.anaconda.org/conda-forge/win-64/sqlite-3.37.0-h8ffe710_0.tar.bz2
+https://repo.anaconda.com/pkgs/main/win-64/python-3.8.11-h6244533_1.conda
+https://conda.anaconda.org/conda-forge/noarch/colorama-0.4.4-pyh9f0ad1d_0.tar.bz2
+https://conda.anaconda.org/conda-forge/win-64/python_abi-3.8-2_cp38.tar.bz2
+https://conda.anaconda.org/conda-forge/noarch/wheel-0.37.1-pyhd8ed1ab_0.tar.bz2
+https://conda.anaconda.org/conda-forge/win-64/click-8.0.4-py38haa244fe_0.tar.bz2
+https://conda.anaconda.org/conda-forge/win-64/setuptools-60.9.3-py38haa244fe_0.tar.bz2
+https://conda.anaconda.org/conda-forge/noarch/pip-22.0.3-pyhd8ed1ab_0.tar.bz2
+https://conda.anaconda.org/conda-forge/noarch/python-dotenv-0.19.2-pyhd8ed1ab_0.tar.bz2
+
+conda list --explicit > spec-file.txt: change the explicit to file
+conda create --name myenv --file spec-file.txt: create env with that file
+conda install --name myenv --file spec-file.txt: install package to existong env woth that file
+
+conda env export > environment.yml: export env to a new yml for sharing, remember to activate first
+
+3, Env variables:
+note: create env and activate first
+conda create -n test-env
+conda activate test-env
+conda env config vars list: list variable
+conda env config vars set my_var=value: set variable
+note: remember to reactivate env
+conda activate test-env
+
+can declare env var in yml
+name: env-name
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.7
+  - codecov
+variables:
+  VAR1: valueA
+  VAR2: valueB
+
+- Saving env var: for window
+step 1: Locate the directory for the conda environment in your Anaconda Prompt by running in the command shell %CONDA_PREFIX%
+step 2:
+Enter that directory and create these subdirectories and files:
+
+cd %CONDA_PREFIX%
+mkdir .\etc\conda\activate.d
+mkdir .\etc\conda\deactivate.d
+type NUL > .\etc\conda\activate.d\env_vars.bat
+type NUL > .\etc\conda\deactivate.d\env_vars.bat
+
+step 3:
+Edit .\etc\conda\activate.d\env_vars.bat as follows:
+
+set MY_KEY='secret-key-value'
+set MY_FILE=C:\path\to\my\file
+
+step 4:
+Edit .\etc\conda\deactivate.d\env_vars.bat as follows:
+
+set MY_KEY=
+set MY_FILE=
+
+When you run conda activate analytics, the environment variables MY_KEY and MY_FILE are set to the values you wrote into the file. When you run conda deactivate, those variables are er
+
+
+
+
+
