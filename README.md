@@ -1,0 +1,6 @@
+# Conda-Management
+
+## CONDABASIS
+* Basis command like create,activate,package install,....
+## CONDAADVANCE
+* Working with yml, prefix, enviroment variable,...
