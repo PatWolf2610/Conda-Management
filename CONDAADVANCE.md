@@ -25,7 +25,7 @@ prefix: /path/anaconda3/envs/....
 ```
 conda env create -f vegahvyml.yml
 ```
-3. Update enviroment
+3. Update enviroment (Not dome yet)
 * Update content in your yml file first
 * conda env update --prefix path --file enviroment.yml --prune
 ```
@@ -52,7 +52,7 @@ conda env config vars list
 ```
 conda env config vars unset MYNAME -n test-env
 ```
-5. Saving enviroment variable (for window)
+5. Saving enviroment variable (for window) (Not understand yet)
 * Enter the enviroment directory and create the subdirectories and files
 * note: enter the enviroment directory first
 ``` 
@@ -74,7 +74,7 @@ MY_FILE=G:\python\VegaSeminar\PythonDotEnv
 set MY_KEY=
 set MY_FILE=
 ```
-
+* When you run conda activate analytics, the environment variables MY_KEY and MY_FILE are set to the values you wrote into the file. When you run conda deactivate, those variables are erased.
 
 6. Sharing an enviroment
 * activate the enviroment need to export first
